@@ -1,0 +1,33 @@
+   <div>
+   <span>Please Select Technology:</span> <select [(ngModel)]="ValueId" (change)="selectedValueObj($event)">
+   <option  *ngFor="let Value of technologies" [value]="Value.id" >
+   {{Value.name}}</option></select> 
+   </div>
+   <h3>List of Source Code Repository</h3>
+    <div class="row">
+    <div class="col-md-6" *ngFor="let nutanixData of nutaNixGitHubData" (click) ="showDetails(nutanixData.owner.login)">
+        <div class="panel">
+            <div class="panel-body panelbody"> 
+                <div class="col-md-3"> <img src="{{nutanixData.owner.avatar_url}}"
+                 alt="avatar" height="200" width="180"></div>
+                <div class="col-md-6">
+                    <div> <span>ID: {{nutanixData.id}}</span> </div>
+                <div> <span>Name: {{nutanixData.name}}</span> </div>
+                <div> <span>Full name: {{nutanixData.full_name}}</span> </div>
+                <div> <span>Owner Login: {{nutanixData.owner.login}}</span> </div>
+                <div> <span>Owner ID: {{nutanixData.owner.id}}</span> </div>
+                <div> <span>Url: <a href="{{nutanixData.owner.url}}">{{nutanixData.owner.url}}</a></span> </div>
+                <div> <span>Type: {{nutanixData.owner.type}}</span> </div>
+                <div> <span>Size: {{nutanixData.size}}</span> </div>
+                <div> <span>No. of Forks: {{nutanixData.forks}}</span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+ <div style="text-align: center; margin-bottom: 10px;" *ngIf="nutaNixGitHubData">
+      <button [disabled] ="curPage == 1" (click)="prevPageClick()">PREV</button>
+        <span>Page {{curPage}} of {{ numberOfPages() }}</span>
+      <button [disabled] = "curPage >= 9" (click) ="currentPageClick()">NEXT</button>
+  </div>   

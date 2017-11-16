@@ -1,0 +1,42 @@
+   <div *ngIf="nutaNixOwnerData">
+   <h3>{{nutaNixOwnerData.login}}</h3>
+        <div class="panel">
+            <div class="panel-body panelbody"> 
+                <div class="col-md-2"> <img src="{{nutaNixOwnerData.avatar_url}}"
+                 alt="avatar" height="200" width="250"></div>
+                <div class="col-md-8">
+                    <div> <span>Login: {{nutaNixOwnerData.login}}</span> </div>
+                    <div> <span>ID: {{nutaNixOwnerData.id}}</span> </div>
+                    <div> <span>Type: {{nutaNixOwnerData.type}}</span> </div>
+                    <div> <span>Site Admin: {{nutaNixOwnerData.site_admin}}</span> </div>
+                    <div> <span>Score: {{nutaNixOwnerData.score}}</span> </div>
+                    <div> <span>Url: <a href="{{nutaNixOwnerData.html_url}}">{{nutaNixOwnerData.html_url}}</a></span> </div>
+                    <div> <span>Followers Url: <a href="{{nutaNixOwnerData.followers_url}}">{{nutaNixOwnerData.followers_url}}</a></span> </div>
+                    <div> <span>Following Url: <a href="{{nutaNixOwnerData.following_url}}">{{nutaNixOwnerData.following_url}}</a></span> </div>
+                    <div> <span>Received Event Url: <a href="{{nutaNixOwnerData.received_events_url}}">{{nutaNixOwnerData.received_events_url}}</a></span> </div>
+                </div>
+            </div>
+        </div>
+     </div>
+
+<div class="row container" *ngIf="nutaNixOwnerData">
+  <h3>Followers of {{nutaNixOwnerData.login}}</h3>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="col-md-2">Avatar</th>
+        <th class="col-md-2">Login</th>
+        <th class="col-md-2">Id</th>
+        <th class="col-md-2">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ownerFollower of gitHubOwnerFollowers">
+        <td class="col-md-2"><img src="{{ownerFollower.avatar_url}}" alt="avatar" height="200" width="250"></td>
+        <td class="col-md-2"><span>{{ownerFollower.login}}</span></td>
+        <td class="col-md-2"><span>{{ownerFollower.id}}</span></td>
+        <td class="col-md-2"><span>{{ownerFollower.type}}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
