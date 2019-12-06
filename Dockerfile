@@ -7,6 +7,8 @@ COPY package*.json /app/
 
 RUN npm ci
 
+npm install npm@6.1
+
 COPY ./ /app/
 ARG configuration=production
 RUN npm run build -- --output-path=./dist/out --configuration $configuration
